@@ -1,15 +1,15 @@
-import { AdminEntityBuilderContainer } from "./_container";
+import { AdminServerEntityBuilderContainer } from "./_container";
 import { DbProvider } from "./_db";
 
-export const EntityPageProvider = AdminEntityBuilderContainer.provider(ctx => {
+export const EntityPageProvider = AdminServerEntityBuilderContainer.provider(ctx => {
 
     return async function EntityPage() {
         const db = ctx.innerDeps.db
-        
+
         const result = await db.query.entitySchema.findMany()
 
         console.log(result)
-        
+
         return <div>
             <h1>{ctx.deps.config.title}</h1>
 
@@ -21,4 +21,5 @@ export const EntityPageProvider = AdminEntityBuilderContainer.provider(ctx => {
 }, {
     db: DbProvider
 })
-//27:28
+
+//1:15:30

@@ -1,3 +1,3 @@
-import { UserEntity } from "@/entityes/user";
+import { UserEntity } from "@/entityes/user/server";
 
 export default UserEntity.EntityPage

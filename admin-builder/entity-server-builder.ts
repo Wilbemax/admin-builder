@@ -1,10 +1,10 @@
 import { createModule } from 'tiny-invert';
+import { AdminServerEntityBuilderContainer } from './_container';
 import { EntityPageProvider } from './_entity_page';
-import { AdminEntityBuilderContainer } from './_container';
 
 export type { AdminBuilderField, AdminEntityConfig } from './_types';
 
-const EntryProvider = AdminEntityBuilderContainer.provider(
+const EntryProvider = AdminServerEntityBuilderContainer.provider(
 	(ctx) => ({
 		EntityPage: ctx.innerDeps.EntityPage,
 	}),
@@ -13,4 +13,4 @@ const EntryProvider = AdminEntityBuilderContainer.provider(
 	}
 );
 
-export const EntityBuilder = createModule(EntryProvider);
+export const EntityServerBuilder = createModule(EntryProvider);
