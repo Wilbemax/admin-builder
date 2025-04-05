@@ -1,25 +1,25 @@
-import { AdminDbEntityBuilderContainer } from "./_container";
-import { DbProvider } from "./_db";
+import { Button } from "@/components/ui/button";
+import { AdminClientEntityBuilderContainer } from "./_container";
 
-export const EntityPageProvider = AdminDbEntityBuilderContainer.provider(ctx => {
+export const EntityPageProvider = AdminClientEntityBuilderContainer.provider(({
+    deps: {
+        action,
+        config,
+    },
+}) => {
+    return function EntityPage() {
+        return (
+            <div>
+                <h1>{config.title}</h1>
+                <div className="flex gap-4"></div>
+                <Button onClick={() => {
+                    action()
+                }}>Create</Button>
 
-    return async function EntityPage() {
-        const db = ctx.innerDeps.db
-
-        const result = await db.query.entitySchema.findMany()
-
-        console.log(result)
-
-        return <div>
-            <h1>{ctx.deps.config.title}</h1>
-
-            <div>{ctx.deps.config.fields.map((field) =>
-                <div key={field.name}>{field.type}: {field.name}</div>
-            )}</div>
-        </div>
+                <div>{config.fields.map((field) =>
+                    <div key={field.name}>{field.type}: {field.name}</div>
+                )}</div>
+            </div>)
     }
-}, {
-    db: DbProvider
-})
+},)
 
-//1:15:30

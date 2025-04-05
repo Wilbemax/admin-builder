@@ -23,7 +23,7 @@ export const AdminServerEntityBuilderContainer = mergeContainers([
 	client: {
 		CreateEntityForm: () => JSX.Element;
 	};
-}>('AdminServerEntityBuilderContainer');
+}>("AdminServerEntityBuilderContainer");
 
 export const AdminActionEntityBuilderContainer = mergeContainers([
 	DbClientContainer,
@@ -34,4 +34,4 @@ export const AdminClientEntityBuilderContainer = mergeContainers([
 	ConfigContainer,
 ]).extend<{
 	action: () => Promise<unknown>;
-}>('AdminClientEntityBuilderContainer');
+}>("AdminClientEntityBuilderContainer");
