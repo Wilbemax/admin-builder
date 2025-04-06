@@ -1,5 +1,5 @@
 import { createContainer, mergeContainers } from 'tiny-invert';
-import { AdminEntityConfig } from './_types';
+import { AdminBuilderAction, AdminEntityConfig } from './_types';
 import { Sql } from 'postgres';
 import { JSX } from 'react';
 
@@ -23,7 +23,7 @@ export const AdminServerEntityBuilderContainer = mergeContainers([
 	client: {
 		CreateEntityForm: () => JSX.Element;
 	};
-}>("AdminServerEntityBuilderContainer");
+}>('AdminServerEntityBuilderContainer');
 
 export const AdminActionEntityBuilderContainer = mergeContainers([
 	DbClientContainer,
@@ -33,5 +33,5 @@ export const AdminActionEntityBuilderContainer = mergeContainers([
 export const AdminClientEntityBuilderContainer = mergeContainers([
 	ConfigContainer,
 ]).extend<{
-	action: () => Promise<unknown>;
-}>("AdminClientEntityBuilderContainer");
+	action: AdminBuilderAction;
+}>('AdminClientEntityBuilderContainer');
