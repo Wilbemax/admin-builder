@@ -4,7 +4,7 @@ import { GetEntitiesResult } from "./_types";
 import { Button } from "@/components/ui/button";
 
 export const EntityCardProvider = AdminClientEntityBuilderContainer.provider(
-    ({ deps: { config } }) => {
+    ({ deps: { config,  } }) => {
         return function EntityCard({ entity }: { entity: GetEntitiesResult }) {
             return (
                 <Card>
