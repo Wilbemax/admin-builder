@@ -63,15 +63,20 @@ export const UpsertEntityFormProvider = AdminClientEntityBuilderContainer.provid
                                     <FormLabel>{configField.title}</FormLabel>
                                     <FormControl>
                                         {configField.type === 'select' ? (
-                                            <Select >
-                                                <SelectTrigger>
+                                            <Select onValueChange={field.onChange} value={field.value?.toString() ?? undefined} >
+                                                <SelectTrigger >
                                                     <SelectValue placeholder={'select'} />
                                                 </SelectTrigger>
 
                                                 <SelectContent>
-                                                    {configField.options.map(option => (
-                                                        <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                                                    ))}
+                                                    {configField.options.map(option => {
+                                                        console.log(option);
+
+                                                        return (
+
+                                                            <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                                                        )
+                                                    })}
                                                 </SelectContent>
                                             </Select>
                                         ) :

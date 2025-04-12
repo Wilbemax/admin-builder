@@ -11,6 +11,7 @@ import {
 import { UpsertEntityFormProvider } from "./_upsert-entity-form";
 import { useEffect, useState, useTransition } from "react";
 import { GetEntitiesResult } from "./_types";
+import { Loader2 } from "lucide-react";
 
 
 
@@ -54,13 +55,15 @@ export const EntityPageProvider = AdminClientEntityBuilderContainer.provider(({
                     </Dialog>
                 </div>
 
-
-                <div className="grid grid-cols-3 gap-4">
-                    {isLoading && <p>Loading...</p>}
-                    {entity && entity.map((el) =>
-                        <EntityCard key={el.id} entity={el} />
-                    )}
-                </div>
+                {isLoading ? <div className="max-w-[1200px] mx-auto flex justify-center m-80">
+                    <Loader2 className="animate-spin" size={32} />
+                </div> :
+                    <div className="grid grid-cols-3 gap-4">
+                        {entity && entity.map((el) =>
+                            <EntityCard key={el.id} entity={el} />
+                        )}
+                    </div>
+                }
             </div>)
     }
 }, {
